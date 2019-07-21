@@ -22,7 +22,7 @@ int main()
 }
 void knapsack(vector<int> &val,vector<int> &w,int wt)
 {
-    //condition:- weight should be in sorted manner with values.
+   
     int i,j,temp,a[val.size()+1][wt+1];  // memoization table
     for(i=0;i<=val.size();i++)
     {
