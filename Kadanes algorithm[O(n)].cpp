@@ -1,42 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
-int minjump(vector<int> &);
 int main()
 {
-    int n,i,x,min_jump;
-    vector<int> vec;
+    int n,i,ans,sum,x,max_sum,temp,temp_sum,start,end;
     cin>>n;
+    vector<int> vec;
     for(i=0;i<n;i++)
     {
         cin>>x;
         vec.push_back(x);
     }
-    min_jump=minjump(vec);
-    cout<<min_jump<<endl;
-}
-int minjump(vector<int> &nvc)
-{
-    int temp,n=nvc.size(),i=0,jump=1,ladder,maxreach;
-    if(n==1)
-        return 0;   //we are already at the end
-    if(nvc.at(i)<=0)
-        return -1;   //we can't reach at the end
-    ladder=nvc.at(0);
-    maxreach=nvc.at(i)+i;
-    for(i=1;i<n;i++)
+    max_sum=vec.at(0);
+    temp_sum=0;
+    start=0;
+    end=0;    //these three variables are just to print subarrray.
+    temp=0;
+    for(i=0;i<n;i++)
     {
-        if(i==n-1)
-           return jump;
-        temp=nvc.at(i)+i;
-        maxreach=maxreach>temp?maxreach:temp;
-        ladder--;
-        if(ladder==0)
-        {
-            if(i>=maxreach)
-                return -1;
-            jump++;
-            ladder=maxreach-i;
-        }
+        temp_sum+=vec.at(i);
+        if(temp_sum>max_sum)
+            {
+                max_sum=temp_sum;
+                start=temp;
+                end=i;
+            }
+        if(temp_sum<=0)
+            {
+                temp_sum=0;
+                temp=i+1;
+            }
     }
-    return jump;
+    for(i=start;i<=end;i++)
+        cout<<vec.at(i)<<" ";
+    cout<<"max sum="<<max_sum<<endl;
 }
