@@ -1,3 +1,5 @@
+//no need to sort the values and weights.
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -5,19 +7,18 @@ void knapsack(vector<int> &,vector<int> &,int);
 int main()
 {
     int wt,n,i,x;
-    cin>>n;
+    cin>>n>>wt;  
     vector<int> w,val;
-    for(i=0;i<n;i++)
-    {
-        cin>>x;
-        val.push_back(x);
-    }
-    for(i=0;i<n;i++)
+    for(i=0;i<n;i++) //enter n weight 
     {
         cin>>x;
         w.push_back(x);
     }
-    cin>>wt;
+    for(i=0;i<n;i++)  //enter n values
+    {
+        cin>>x;
+        val.push_back(x);
+    }
     knapsack(val,w,wt);
 }
 void knapsack(vector<int> &val,vector<int> &w,int wt)
